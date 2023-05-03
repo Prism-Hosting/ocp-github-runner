@@ -1,0 +1,6 @@
+appName: actions-runner
+githubOwner: Prism-hosting
+runnerImage: quay.io/redhat-github-actions/runner
+runnerTag: latest
+serviceAccountName: sa-github-actions
+replicas: 2
