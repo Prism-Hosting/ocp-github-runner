@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-actions
+  namespace: github-actions
+spec:
+  selector:
+    matchLabels:
+      deployment: github-actions
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  template:
+    metadata:
+      labels:
+        deployment: github-actions
+    spec:
+      replicas: 2
+      containers:
+      - name: github-actions-runner
+        image: prismhosting/git-runner-builder-image:latest
+        resources:
+          limits:
+            cpu: 250m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 512Mi
+        env:
+          - name: GITHUB_OWNER
+            valueFrom:
+              configMapKeyRef:
+                key: github-owner
+                name: github-actions-environments
+          - name: GITHUB_PAT
+            valueFrom:
+              secretKeyRef:
+                key: github-pat
+                name: github-actions-pat
