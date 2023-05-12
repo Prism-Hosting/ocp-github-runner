@@ -18,10 +18,10 @@ spec:
       labels:
         deployment: github-actions
     spec:
+      serviceAccountName: sa-github-actions
       containers:
       - name: github-actions-runner
         image: prismhosting/git-runner-builder-image:latest
-        serviceAccountName: sa-github-actions
         securityContext:
            runAsUser: 1001
         resources:
