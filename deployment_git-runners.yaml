@@ -22,6 +22,8 @@ spec:
       - name: github-actions-runner
         image: prismhosting/git-runner-builder-image:latest
         serviceAccountName: sa-github-actions
+        securityContext:
+           runAsUser: 1001
         resources:
           limits:
             cpu: 250m
