@@ -21,6 +21,7 @@ spec:
       containers:
       - name: github-actions-runner
         image: prismhosting/git-runner-builder-image:latest
+        serviceAccountName: sa-github-actions
         resources:
           limits:
             cpu: 250m
