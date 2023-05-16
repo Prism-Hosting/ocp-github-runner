@@ -7,6 +7,6 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["*"]
-- apiGroups: [""]
+- apiGroups: ["apps"]
   resources: ["deployments"]
   verbs: ["*"]
